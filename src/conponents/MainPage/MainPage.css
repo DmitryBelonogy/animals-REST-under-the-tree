@@ -1,0 +1,117 @@
+body {
+  background: url(https://images.pexels.com/photos/414586/pexels-photo-414586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-attachment: fixed;
+}
+
+.main_page {
+  display: flex;  
+}
+
+.animals_list {
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;  
+}
+
+.logo {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  width: 100px;
+  height: 100px;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 50px;
+  font-weight: 700;
+  background: rgb(42, 252, 199);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.log_out {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  background: grey;
+  cursor: pointer;
+  z-index: 10;
+  transition: all ease-out 0.3s;
+}
+
+.log_out.show {
+  top: 20%;
+}
+
+.add_btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  width: 80px;
+  height: 80px;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 50px;
+  font-weight: 700;
+  background: rgb(12, 250, 250);
+  cursor: pointer;
+}
+
+.form {
+  position: fixed;
+  top: 180px;
+  left: -50%;
+  width: 300px;
+  height: 260px;
+  padding: 20px;
+  background: grey;
+  border-radius: 10px;
+  transition: all ease-out 0.5s;
+}
+
+.form.show {
+  left: 30%;
+}
+
+.form input[type='text'] {
+  width: 93%;
+  height: 35px;
+  padding: 0 10px 0 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form textarea {
+  width: 93%;
+  height: 50%;
+  padding: 10px;
+  resize: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;  
+}
+
+.form button {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background: rgb(198, 255, 65);
+  font-weight: 600;
+  text-transform: uppercase;
+}

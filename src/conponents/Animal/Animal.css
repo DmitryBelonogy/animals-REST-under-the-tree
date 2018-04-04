@@ -1,0 +1,59 @@
+.animal {
+  position: relative;
+  width: 60%;
+  height: 200px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: rgba(128, 128, 128, 0.411);
+}
+
+.name {
+  display: inline-block;
+  width: 80%;
+  height: 30%;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.discription {
+  display: inline-block;
+  width: 80%;
+  height: 30%;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.delite {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  width: 50px;
+  height: 50px;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  font-size: 25px;
+  font-weight: 700;
+  background: rgba(252, 149, 108, 0.514);
+  cursor: pointer;
+}
+
+.change_btn {
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  width: 100px;
+  height: 50px;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  background: rgba(175, 255, 70, 0.5);
+  cursor: pointer;
+}
