@@ -9,48 +9,29 @@ class Animal extends Component {
     this.state = {
       id: this.props.animal.id,
       name: this.props.animal.name,
-      discription: this.props.animal.discription
+      description: this.props.animal.description
     };
   }
 
-  // change = (id) => {
-  //   let form = document.querySelector('.form');
-  //   let name = document.querySelector('.form input');
-  //   let discription = document.querySelector('.form textarea');
-  //   name.value = this.props.animal.name;
-  //   discription.value = this.props.animal.discription;
-  //   form.classList.toggle('show');    
-  //   if(form.className.indexOf('show') < 0 && name.value && discription.value){
-  //     this.setState({
-  //       name: name.value,
-  //       discription: discription.value
-  //     });
-  //     let data = this.state;
-  //     console.log(data);
-  //   }
-  // }
-
-  del_item = (id) => {
+  deliteItem = (id) => {
     this.props.onDelAnimal(id);
   }
 
   render() {
-    let id = this.props.animal.id;
+    const {id, name, description} = this.props.animal;
     return(
       <div className='animal'>
-        <span className='name'>{this.props.animal.name}</span>
-        <span className='discription'>{this.props.animal.discription}</span>
-        <div className='delite' onClick={() => this.del_item(id)}>X</div>
-        <div className='change_btn' onClick={() => this.props.change(id, this.props.animal.name, this.props.animal.discription)}>Change</div>
+        <span className='name'>{name}</span>
+        <span className='description'>{description}</span>
+        <div className='delite' onClick={() => this.deliteItem(id)}>X</div>
+        <div className='change-btn' onClick={() => this.props.change(id, name, description)}>Change</div>
       </div>
     )
   }
 }
 
 export default connect(	
-	state => ({
-		store: state.animals
-  }),
+	state => ({}),
   dispatch => ({
 		onDelAnimal: (id) => {
 			dispatch({type: 'DEL_DATA', payload: id})

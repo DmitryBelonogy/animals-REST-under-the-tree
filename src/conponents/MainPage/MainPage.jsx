@@ -10,33 +10,36 @@ class MainPage extends Component {
     this.state = {
       id: null,
       name: '',
-      discription: ''
+      description: ''
     };
+    this.myForm = React.createRef();
+    this.myInput = React.createRef();
+    this.myTextarea = React.createRef();
+    this.Menu = React.createRef();
   }
 
   addNewAnimal = () => {
-    let form = document.querySelector('.form');
+    let form = this.myForm;    
     form.classList.toggle('show');
-    if(form.className.indexOf('show') < 0 && this.state.name && this.state.discription && !this.state.id){
+    if(form.className.indexOf('show') < 0 && this.state.name && this.state.description && !this.state.id){
       let data = this.state;
       data.id = +new Date();
       this.props.onAddAnimal(data);
     }
-    if(form.className.indexOf('show') < 0 && this.state.name && this.state.discription && this.state.id){
+    if(form.className.indexOf('show') < 0 && this.state.name && this.state.description && this.state.id){
       this.props.onChangeAnimal(this.state);
     }
     this.setState({
       id: null,
       name: '',
-      discription: ''
+      description: ''
     });
-    document.querySelector('.form input').value = '';
-    document.querySelector('.form textarea').value = '';
+    this.myInput.value = '';
+    this.myTextarea.value = '';
   }
 
   showMenu = () => {
-    let menu = document.querySelector('.log_out');
-    menu.classList.toggle('show');
+    this.Menu.classList.toggle('show');
   }
 
   logOut =() => {
@@ -44,45 +47,42 @@ class MainPage extends Component {
   }
 
   changeForm = () => {
-    let name = document.querySelector('.form input').value;
-    let discription = document.querySelector('.form textarea').value;
+    let name = this.myInput.value;
+    let description = this.myTextarea.value;
     this.setState({
       name,
-      discription
+      description
     });
   }
 
-  changeAnimal = (id, name, discription) => {
-    let form = document.querySelector('.form');
-    let nameInput = document.querySelector('.form input');
-    let discriptionInput = document.querySelector('.form textarea');
-    nameInput.value = name;
-    discriptionInput.value = discription;
+  changeAnimal = (id, name, description) => {
+    this.myInput.value = name;
+    this.myTextarea.value = description;
     this.setState({
       id
     });
-    form.classList.toggle('show');
+    this.myForm.classList.toggle('show');
   }
 
-  render() {
+  render() {    
     return (
-      <div className="main_page">
-        <div className='logo' onClick={this.showMenu}>D</div>
-        <div className='log_out' onClick={this.logOut}>{'<='}</div>
-        <div className='animals_list'>
+      <div className="main-page">
+        <div className='logo' onClick={this.showMenu} >D</div>
+        <div className='log-out' onClick={this.logOut} ref={element => this.Menu = element} >{'<='}</div>
+        <div className='animals-list'>
           {
-            this.props.store.map(item => <Animal key={item.id} animal={item} change={this.changeAnimal}/>)
+            this.props.animals.map(item => <Animal key={item.id} animal={item} change={this.changeAnimal}/>)
           }
         </div>
-        <div className='add_btn' onClick={this.addNewAnimal}>+</div>
-        <form className='form' onChange={this.changeForm}>
+        <div className='add-btn' onClick={this.addNewAnimal}>+</div>
+        <form className='form' onChange={this.changeForm} ref={(element) => this.myForm = element} >
           <label>
             Animal's name
-            <input type="text"/>
+            <input type="text" ref={(element) => this.myInput = element} />
           </label>
           <label>
-            Discription
-            <textarea name="discription" className='discription' cols="30" rows="10"></textarea>
+            Description
+            <textarea name="description" className='description' cols="30" rows="10" ref={(element) => this.myTextarea = element}></textarea>
           </label>
         </form>
       </div>
@@ -92,7 +92,7 @@ class MainPage extends Component {
 
 export default connect(	
 	state => ({
-		store: state.animals
+    animals: state.animals,
   }),
   dispatch => ({
 		onAddAnimal: (data) => {
